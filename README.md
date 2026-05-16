@@ -44,7 +44,7 @@ matrixflowers/
 
 ## Quick Start
 
-### Regressão com Trainer (alto nível)
+### Regression with Trainer (high level)
 
 ```python
 import numpy as np
@@ -58,7 +58,7 @@ from train.losses import mse
 X = np.linspace(-2, 2, 200).reshape(-1, 1).astype(np.float32)
 y = (X ** 2).astype(np.float32)
 
-# Modelo
+# Model
 model = Sequential([
     Dense(16, input_dim=1,  activation="relu"),
     Dense(16, input_dim=16, activation="relu"),
@@ -67,13 +67,13 @@ model = Sequential([
 
 model.summary()
 
-# Treino
+# Training
 optimizer = Adam(model.trainable_tensors(), lr=0.01)
 trainer = Trainer(model=model, optimizer=optimizer, loss_fn=mse)
 trainer.fit(X, y, epochs=500, batch_size=32, verbose=True)
 ```
 
-### Treino manual com GradientTape
+### Manual training with GradientTape
 
 ```python
 from train.tape import GradientTape
